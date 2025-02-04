@@ -8,9 +8,12 @@ export default function Game() {
     type Players = [{ name: string, score: number }]
     const location = useLocation();
     const [players, setPlayers] = useState<Players>(location.state)
-    const [input, setInput] = useState<number>()
+    const [input, setInput] = useState<number>(0)
     const [currentIndex, setCurrentIncex] = useState(0)
 
+    function setPoint() {
+
+    }
     return (
         <Stack spacing={5}>
             <Stack direction={"row"} spacing={5}>
@@ -35,20 +38,20 @@ export default function Game() {
             </Stack>
 
             <Stack>
-                <NumberField.Root onValueChange={(e, Enter) => {
-                    if (e) {
-                        let arr = players
-                        arr[currentIndex].score = arr[currentIndex].score - e
-                        setPlayers(arr)
-                        setCurrentIncex(p => p + 1 != players.length ? p + 1 : 0)
-
-                    }
-                }}>
+                <NumberField.Root >
                     <NumberField.ScrubArea>
                         <NumberField.ScrubAreaCursor />
                     </NumberField.ScrubArea>
                     <NumberField.Group>
-                        <NumberField.Input />
+                        <NumberField.Input onKeyDown={(e) => {
+                            if (e.code === "Enter") {
+                                let arr = players
+                                arr[currentIndex].score = arr[currentIndex].score - input
+                                setPlayers(arr)
+                                setCurrentIncex(p => p + 1 != players.length ? p + 1 : 0)
+
+                            }
+                        }} onChange={(e) => setInput(parseInt(e.target.value))} />
                     </NumberField.Group>
                 </NumberField.Root>
                 <TableContainer component={Paper}>
