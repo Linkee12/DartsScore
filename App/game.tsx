@@ -6,10 +6,12 @@ import { NumberField } from '@base-ui-components/react/number-field';
 
 export default function Game() {
     type Players = [{ name: string, score: number }]
+
     const location = useLocation();
     const [players, setPlayers] = useState<Players>(location.state)
     const [input, setInput] = useState<number>(0)
     const [currentIndex, setCurrentIncex] = useState(0)
+    const [isError, setIsError] = useState(false)
 
     function setPoint() {
 
@@ -23,6 +25,7 @@ export default function Game() {
                     display: "flex",
                     flex: 1,
                     justifyContent: "center",
+                    color: "#0041f5",
                 }}>
                     {players[currentIndex].name}
                 </Box>
@@ -32,26 +35,36 @@ export default function Game() {
                     flex: 1,
                     fontSize: 'clamp(30px, 10vw, 170px)',
                     fontWeight: "bold",
+                    color: "#0041f5",
                 }}>
                     {players[currentIndex].score}
                 </Box>
             </Stack>
 
-            <Stack>
-                <NumberField.Root >
+            <Stack spacing={5}>
+                <NumberField.Root style={{ height: "4rem" }}>
                     <NumberField.ScrubArea>
                         <NumberField.ScrubAreaCursor />
                     </NumberField.ScrubArea>
                     <NumberField.Group>
                         <NumberField.Input onKeyDown={(e) => {
                             if (e.code === "Enter") {
-                                let arr = players
-                                arr[currentIndex].score = arr[currentIndex].score - input
-                                setPlayers(arr)
-                                setCurrentIncex(p => p + 1 != players.length ? p + 1 : 0)
+                                if (input <= 180 && input >= 0) {
+                                    console.log(input)
+                                    let arr = players
+                                    arr[currentIndex].score = arr[currentIndex].score - input
+                                    setPlayers(arr)
+                                    setCurrentIncex(p => p + 1 != players.length ? p + 1 : 0)
+                                    setIsError(false)
+                                    setInput(0)
+                                }
+                                else {
+                                    setIsError(true)
+                                }
 
                             }
-                        }} onChange={(e) => setInput(parseInt(e.target.value))} />
+                        }} onChange={(e) => setInput(parseInt(e.target.value))}
+                            style={{ height: "3rem", fontSize: 30, backgroundColor: "#5d9294", width: "10rem", borderColor: isError ? "red" : "", borderRadius: 3 }} />
                     </NumberField.Group>
                 </NumberField.Root>
                 <TableContainer component={Paper}>
