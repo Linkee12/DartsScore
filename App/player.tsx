@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import DeleteIcon from '@mui/icons-material/Delete';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import Logo from "../assets/Logo";
+
 
 export default function Player() {
     type Players = {
@@ -16,7 +18,10 @@ export default function Player() {
     console.log(location.state)
     return (
         <Stack spacing={2}>
-            <Typography variant='h2' sx={{ fontWeight: 'bold', color: "#fff" }} >Add player:</Typography>
+            <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"}>
+                <Typography variant='h2' sx={{ fontWeight: 'bold', color: "#008080" }} >Add player:</Typography>
+                <Logo />
+            </Stack>
             {players.map((e, i) => <Box sx={{ fontWeight: 'bold', p: 2, m: 0, marginBottom: 3, borderRadius: 2, bgcolor: "#1F1F1F", }} key={i}>
                 <Stack direction={'row'} sx={{ justifyContent: "space-between", alignItems: "center" }}>
                     <Typography variant="h2" component="div" color='primary' fontWeight={'bold'} marginTop={'1rem'}>{e.name}</Typography>
@@ -37,7 +42,7 @@ export default function Player() {
                     sx={{ bgcolor: '#c0c0c0', width: "100%" }}
                     onChange={e => setInput(e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1))}
                     autoFocus={true}
-                    onKeyDown={(e) => { if (e.code === 'Enter') { setPlayers((p) => [...p, { name: input, score: location.state.score }]); setInput(''); } }}
+                    onKeyDown={(e) => { if (e.code === 'Enter') { if (input != "") { setPlayers((p) => [...p, { name: input, score: location.state.score }]); setInput(''); } } }}
                 />
             </Stack>
             {players.length > 0 ? <Button

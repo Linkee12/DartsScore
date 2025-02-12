@@ -6,41 +6,37 @@ import { NumberField } from '@base-ui-components/react/number-field';
 
 export default function Game() {
     type Players = [{ name: string, score: number }]
-
     const location = useLocation();
     const [players, setPlayers] = useState<Players>(location.state)
     const [input, setInput] = useState<number>(0)
     const [currentIndex, setCurrentIncex] = useState(0)
     const [isError, setIsError] = useState(false)
 
-    function setPoint() {
-
-    }
     return (
         <Stack spacing={5}>
-            <Stack direction={"row"} spacing={5}>
-                <Box sx={{
-                    fontSize: 'clamp(30px, 10vw, 170px)',
-                    fontWeight: "bold",
-                    display: "flex",
-                    flex: 1,
-                    justifyContent: "center",
-                    color: "#0041f5",
-                }}>
-                    {players[currentIndex].name}
-                </Box>
-                <Box sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    flex: 1,
-                    fontSize: 'clamp(30px, 10vw, 170px)',
-                    fontWeight: "bold",
-                    color: "#0041f5",
-                }}>
-                    {players[currentIndex].score}
-                </Box>
-            </Stack>
-
+            <Box sx={{ bgcolor: "#ff4c09", borderRadius: 3, padding: 3, paddingTop: 6 }}>
+                <Stack direction={"row"} spacing={5}>
+                    <Box sx={{
+                        fontSize: 'clamp(30px, 10vw, 110px)',
+                        fontWeight: "bold",
+                        display: "flex",
+                        flex: 1,
+                        justifyContent: "center",
+                        color: "#ffdcce",
+                    }}>
+                        {players[currentIndex].name}
+                    </Box>
+                    <Box sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        flex: 1,
+                        fontSize: 'clamp(30px, 10vw, 170px)',
+                        fontWeight: "bold",
+                        color: "#ffdcce",
+                    }}>
+                        {players[currentIndex].score}
+                    </Box>
+                </Stack></Box>
             <Stack spacing={5}>
                 <NumberField.Root style={{ height: "4rem" }}>
                     <NumberField.ScrubArea>
@@ -68,9 +64,9 @@ export default function Game() {
                     </NumberField.Group>
                 </NumberField.Root>
                 <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+                    <Table sx={{ minWidth: 100, bgcolor: "grey" }} size="medium" aria-label="a dense table" >
                         <TableHead>
-                            <TableRow>
+                            <TableRow sx={{ height: "3rem" }}>
                                 <TableCell>Players:</TableCell>
                                 <TableCell align="right">Score</TableCell>
                             </TableRow>
@@ -79,7 +75,7 @@ export default function Game() {
                             {players.map((row) => (
                                 < TableRow
                                     key={row.name}
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: "3rem" }}
                                 >
                                     <TableCell component="th" scope="row">
                                         {row.name}
