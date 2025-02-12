@@ -1,11 +1,15 @@
-import { Box, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Stack } from "@mui/material";
 import React, { useState } from "react";
 import { useLocation } from "react-router";
 import { NumberField } from '@base-ui-components/react/number-field';
+import PlayerCard from "./PlayerCard";
 
+
+
+type Players = [{ name: string, score: number }]
 
 export default function Game() {
-    type Players = [{ name: string, score: number }]
+
     const location = useLocation();
     const [players, setPlayers] = useState<Players>(location.state)
     const [input, setInput] = useState<number>(0)
@@ -14,79 +18,33 @@ export default function Game() {
 
     return (
         <Stack spacing={5}>
-            <Box sx={{ bgcolor: "#ff4c09", borderRadius: 3, padding: 3, paddingTop: 6 }}>
-                <Stack direction={"row"} spacing={5}>
-                    <Box sx={{
-                        fontSize: 'clamp(30px, 10vw, 110px)',
-                        fontWeight: "bold",
-                        display: "flex",
-                        flex: 1,
-                        justifyContent: "center",
-                        color: "#ffdcce",
-                    }}>
-                        {players[currentIndex].name}
-                    </Box>
-                    <Box sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        flex: 1,
-                        fontSize: 'clamp(30px, 10vw, 170px)',
-                        fontWeight: "bold",
-                        color: "#ffdcce",
-                    }}>
-                        {players[currentIndex].score}
-                    </Box>
-                </Stack></Box>
-            <Stack spacing={5}>
-                <NumberField.Root style={{ height: "4rem" }}>
-                    <NumberField.ScrubArea>
-                        <NumberField.ScrubAreaCursor />
-                    </NumberField.ScrubArea>
-                    <NumberField.Group>
-                        <NumberField.Input onKeyDown={(e) => {
-                            if (e.code === "Enter") {
-                                if (input <= 180 && input >= 0) {
-                                    console.log(input)
-                                    let arr = players
-                                    arr[currentIndex].score = arr[currentIndex].score - input
-                                    setPlayers(arr)
-                                    setCurrentIncex(p => p + 1 != players.length ? p + 1 : 0)
-                                    setIsError(false)
-                                    setInput(0)
-                                }
-                                else {
-                                    setIsError(true)
-                                }
-
-                            }
-                        }} onChange={(e) => setInput(parseInt(e.target.value))}
-                            style={{ height: "3rem", fontSize: 30, backgroundColor: "#5d9294", width: "10rem", borderColor: isError ? "red" : "", borderRadius: 3 }} />
-                    </NumberField.Group>
-                </NumberField.Root>
-                <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 100, bgcolor: "grey" }} size="medium" aria-label="a dense table" >
-                        <TableHead>
-                            <TableRow sx={{ height: "3rem" }}>
-                                <TableCell>Players:</TableCell>
-                                <TableCell align="right">Score</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {players.map((row) => (
-                                < TableRow
-                                    key={row.name}
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: "3rem" }}
-                                >
-                                    <TableCell component="th" scope="row">
-                                        {row.name}
-                                    </TableCell>
-                                    <TableCell align="right">{row.score}</TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+            <Stack direction={"row"} spacing={3}>
+                {players.map((e) => (<PlayerCard name={e.name} score={e.score} />))}
             </Stack>
-        </Stack >
+            <NumberField.Root style={{ height: "4rem" }}>
+                <NumberField.ScrubArea>
+                    <NumberField.ScrubAreaCursor />
+                </NumberField.ScrubArea>
+                <NumberField.Group>
+                    <NumberField.Input onKeyDown={(e) => {
+                        if (e.code === "Enter") {
+                            if (input <= 180 && input >= 0) {
+                                let arr = players
+                                arr[currentIndex].score = arr[currentIndex].score - input
+                                setPlayers(arr)
+                                setCurrentIncex(p => p + 1 != players.length ? p + 1 : 0)
+                                setIsError(false)
+                                setInput(0)
+                            }
+                            else {
+                                setIsError(true)
+                            }
+
+                        }
+                    }} onChange={(e) => setInput(parseInt(e.target.value))}
+                        style={{ height: "3rem", fontSize: 30, backgroundColor: "#5d9294", width: "10rem", borderColor: isError ? "red" : "", borderRadius: 3 }} />
+                </NumberField.Group>
+            </NumberField.Root>
+        </Stack>
     )
 }
