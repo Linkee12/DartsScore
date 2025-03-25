@@ -1,7 +1,7 @@
 import { CardContent, Typography, Card } from "@mui/material";
 import React from "react"
 type PlayerCardProps = {
-    name: string, score: number
+    name: string, score: number, avg:number|undefined
 }
 export default function PlayerCard(props: PlayerCardProps) {
     return (<Card sx={{ maxWidth: 200, justifyContent: "center" }}>
@@ -14,7 +14,7 @@ export default function PlayerCard(props: PlayerCardProps) {
                 {props.score}
             </Typography>
             <Typography variant="body2">
-                Avarage:{0}
+                Avarage:{props.avg?props.avg:0}
             </Typography>
         </CardContent>
     </Card>)

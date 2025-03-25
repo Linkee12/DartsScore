@@ -42,7 +42,7 @@ export default function Gamemode() {
                 display: "flex",
                 flexDirection: "column",
                 height: "100%",
-                width: "100%",
+                maxWidth: "100%",
             }}
         >
             <GameModeButton score={301} bgColor={"#0D2847"} textColor={"#3B9EFF"}></GameModeButton>
