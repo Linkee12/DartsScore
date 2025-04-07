@@ -1,11 +1,15 @@
 import { CardContent, Typography, Card } from "@mui/material";
-import React from "react"
+import React, { memo } from "react"
+import avg from "../assets/avg";
 type PlayerCardProps = {
-    name: string, score: number, avg:number|undefined
+    name: string, score: number, avg: number[] | undefined
 }
-export default function PlayerCard(props: PlayerCardProps) {
-    return (<Card sx={{ maxWidth: 200, justifyContent: "center" }}>
-        <CardContent>
+
+const PlayerCard = memo(function PlayerCard(props: PlayerCardProps) {
+
+
+    return (<Card sx={{ width: 200, justifyContent: "center", bgcolor: "#11171D", color: "#E3DECE" }}>
+        <CardContent >
             <Typography variant="h4" component="div" fontWeight={600}>
                 {props.name}
             </Typography>
@@ -14,8 +18,9 @@ export default function PlayerCard(props: PlayerCardProps) {
                 {props.score}
             </Typography>
             <Typography variant="body2">
-                Avarage:{props.avg?props.avg:0}
+                Avarage:{avg(props.avg ? props.avg : [])}
             </Typography>
         </CardContent>
     </Card>)
-}
+})
+export default PlayerCard
