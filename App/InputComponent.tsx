@@ -22,11 +22,27 @@ export default function InputComponent({
     setCurrentIndex,
 }: InputComponentProps) {
     const [input, setInput] = useState<string>("");
-
+    const [isError, setIsError] = useState(false);
     const handleClick = (digit: number) => {
         setInput((prev) => prev + digit.toString());
     };
+    function nextIndex(players: Players, currentIndex: number): number {
+        const arrLength = players.length;
+        let index = (currentIndex + 1) % arrLength;
+        let checked = 0;
 
+        while (checked < arrLength) {
+            if (players[index].score !== 0) {
+                return index;
+            }
+            index = (index + 1) % arrLength;
+            checked++;
+        }
+        return currentIndex;
+    }
+    function isInteger(num: number) {
+        return Number.isInteger(num);
+    }
     const numberButtonStyle = {
         margin: "2px",
         fontWeight: "bold",
@@ -71,7 +87,7 @@ export default function InputComponent({
                 type="number"
                 variant="filled"
                 value={input}
-                color="secondary"
+                color={isError ? "error" : "secondary"}
                 sx={{
                     input: {
                         color: "#007C7C",
@@ -88,13 +104,14 @@ export default function InputComponent({
                     if (e.code === "Enter" && input !== "") {
                         const scoreToSubtract = parseInt(input);
                         if (isNaN(scoreToSubtract)) return;
+                        if (scoreToSubtract > 180) { setIsError(true) }
                         const updatedPlayers = [...players];
                         if (scoreToSubtract < 181 && updatedPlayers[currentIndex].score - scoreToSubtract > -1) {
                             updatedPlayers[currentIndex].score -= scoreToSubtract;
                             setPlayers(updatedPlayers);
+                            setIsError(false);
                             setInput("");
-                            if (currentIndex < players.length - 1) { setCurrentIndex(currentIndex + 1) }
-                            else { setCurrentIndex(0) }
+                            setCurrentIndex(nextIndex(players, currentIndex))
                             players[currentIndex].avg.push(scoreToSubtract)
                         }
                     }

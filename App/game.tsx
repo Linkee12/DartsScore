@@ -15,7 +15,8 @@ export default function Game() {
     const location = useLocation();
     const [players, setPlayers] = useState<Players>(location.state)
     const [currentIndex, setCurrentIndex] = useState(0)
-    const [isError, setIsError] = useState(false)
+    const sortedPlayers = [...players].sort((a, b) => a.score - b.score);
+
 
     return (
         <Stack spacing={5} display={"flex"}>
@@ -46,8 +47,7 @@ export default function Game() {
                 </Stack>
             </Stack>
             <Stack direction={"row"} flex={"wrap"} display={"flex"} spacing={3}>
-                {players.sort((a, b) => a.score - b.score)
-                    .map((e, key) => (<PlayerCard name={e.name} score={e.score} avg={e.avg} key={key} />))}
+                {sortedPlayers.map((e, key) => (<PlayerCard name={e.name} score={e.score} avg={e.avg} key={key} />))}
             </Stack>
 
         </Stack >
