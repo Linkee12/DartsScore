@@ -46,7 +46,7 @@ export default function Game() {
                     />
                 </Stack>
             </Stack>
-            <Stack direction={"row"} flex={"wrap"} display={"flex"} spacing={3}>
+            <Stack direction={"row"} flexWrap={"wrap"} display={"flex"} spacing={3}>
                 {sortedPlayers.map((e, key) => (<PlayerCard name={e.name} score={e.score} avg={e.avg} key={key} />))}
             </Stack>
 

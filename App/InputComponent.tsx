@@ -40,9 +40,6 @@ export default function InputComponent({
         }
         return currentIndex;
     }
-    function isInteger(num: number) {
-        return Number.isInteger(num);
-    }
     const numberButtonStyle = {
         margin: "2px",
         fontWeight: "bold",
