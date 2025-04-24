@@ -1,5 +1,5 @@
-import { Card, CardActionArea, CardContent, Stack, Typography } from "@mui/material";
-import React, { useCallback, useState } from "react";
+import { Stack, Typography } from "@mui/material";
+import React, { useState } from "react";
 import { useLocation } from "react-router";
 import PlayerCard from "./PlayerCard";
 import avg from "../assets/avg";
@@ -20,24 +20,24 @@ export default function Game() {
 
     return (
         <Stack spacing={5} display={"flex"}>
-            <Stack spacing={5} display={"flex"} direction={"row"} >
-                <Card sx={{ display: "flex", bgcolor: "#11171D", color: "#E3DECE", flex: 1 }}>
-                    <CardActionArea>
-                        <CardContent>
-                            <Typography gutterBottom variant="h2" component="div">
-                                {players[currentIndex].name}
-                            </Typography>
-                            <Typography variant="h5"> Score: </Typography>
-                            <Typography variant="h1" component="div" fontWeight={700}>
-                                {players[currentIndex].score}
-                            </Typography>
-                            <Typography variant="body2">
-                                Avarage:{avg(players[currentIndex].avg)}
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                </Card>
-                <Stack sx={{ display: "flex", flex: 1 }}>
+            <Stack spacing={5} display={"flex"} flex={1} direction={"row"} color={"#E3DECE"}>
+                <Stack display={"flex"} flex={1} bgcolor={"#11171D"} paddingLeft={3}>
+                    <Typography gutterBottom variant="h1" component="div" fontSize={100}>
+                        {players[currentIndex].name}
+                    </Typography>
+                    <Typography variant="h1" component="div" fontWeight={700} fontSize={150}>
+                        {players[currentIndex].score}
+                    </Typography>
+                </Stack>
+                <Stack padding={5} bgcolor={"#11171D"}>
+                    <Typography variant="body2" fontSize={40}>
+                        Avg:
+                    </Typography>
+                    <Typography variant="body2" fontSize={70}>
+                        {avg(players[currentIndex].avg)}
+                    </Typography>
+                </Stack>
+                <Stack display={"flex"} flex={1}>
                     <InputComponent
                         players={players}
                         setPlayers={setPlayers}
