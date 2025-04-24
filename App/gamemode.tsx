@@ -13,10 +13,12 @@ export default function Gamemode() {
 
         const navigate = useNavigate();
 
-
         return (
             <Box
-                onClick={() => navigate("/player", { state: { score: props.score } })}
+                onClick={() => {
+                    navigate(`/player/${props.score}`)
+
+                }}
                 sx={{
                     backgroundColor: props.bgColor,
                     display: 'flex',
@@ -28,10 +30,11 @@ export default function Gamemode() {
                     borderRadius: 4,
                     color: props.textColor,
                     cursor: 'pointer',
-                }}
+                }
+                }
             >
                 <Box>{props.score}</Box>
-            </Box>
+            </Box >
         );
     }
 

@@ -7,15 +7,15 @@ import Gamemode from "./App/gamemode";
 import Game from "./App/game";
 
 const root = document.getElementById("root");
-
-ReactDOM.createRoot(root).render(
-    <BrowserRouter>
-        <Routes>
-            <Route element={<App />}>
-                <Route path="/" element={<Gamemode />} />
-                <Route path="player" element={<Player />} />
-                <Route path="game" element={<Game />} />
-            </Route>
-        </Routes>
-    </BrowserRouter>
-);
+if (root)
+    ReactDOM.createRoot(root).render(
+        <BrowserRouter>
+            <Routes>
+                <Route element={<App />}>
+                    <Route path="/" element={<Gamemode />} />
+                    <Route path="player/:score" element={<Player />} />
+                    <Route path="game" element={<Game />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );

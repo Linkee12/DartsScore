@@ -1,6 +1,6 @@
 import { Box, Button, createTheme, Stack, TextField, Typography, ThemeProvider } from '@mui/material';
 import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import DeleteIcon from '@mui/icons-material/Delete';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
@@ -13,9 +13,9 @@ export default function Player() {
     }
     const [players, setPlayers] = useState<Players[]>([])
     const [input, setInput] = useState("")
-    const location = useLocation();
     const navigate = useNavigate();
-
+    const { score } = useParams();
+    if (!score) return
     return (<Stack spacing={2}>
         <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"}>
             <Typography variant='h2' color='secondary' sx={{ fontWeight: 'bold', }} >Add player:</Typography>
@@ -42,7 +42,7 @@ export default function Player() {
                 sx={{ bgcolor: '#c0c0c0', width: "100%" }}
                 onChange={e => setInput(e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1))}
                 autoFocus={true}
-                onKeyDown={(e) => { if (e.code === 'Enter') { if (input != "") { setPlayers((p) => [...p, { name: input, score: location.state.score, avg: [] }]); setInput(''); } } }}
+                onKeyDown={(e) => { if (e.code === 'Enter') { if (input != "") { setPlayers((p) => [...p, { name: input, score: parseInt(score), avg: [] }]); setInput(''); } } }}
             />
         </Stack>
         {players.length > 0 ? <Button color='primary' sx={{ height: "3.5rem" }}

@@ -19,24 +19,26 @@ export default function Game() {
 
 
     return (
-        <Stack spacing={5} display={"flex"}>
+        <Stack spacing={5} display={"flex"} >
             <Stack spacing={5} display={"flex"} flex={1} direction={"row"} color={"#E3DECE"}>
-                <Stack display={"flex"} flex={1} bgcolor={"#11171D"} paddingLeft={3}>
+                <Stack display={"flex"} flex={1} bgcolor={"#11171D"} alignItems={"center"} padding={3} borderRadius={5} maxHeight={"50vh"} position={"relative"}>
                     <Typography gutterBottom variant="h1" component="div" fontSize={100}>
                         {players[currentIndex].name}
                     </Typography>
                     <Typography variant="h1" component="div" fontWeight={700} fontSize={150}>
                         {players[currentIndex].score}
                     </Typography>
+                    <Stack padding={5} direction={"row"} position={"absolute"} right={1} bottom={1}>
+                        <Typography variant="body2" fontSize={20}>
+                            Avg:
+                        </Typography>
+                        <Typography variant="body2" fontSize={20}>
+                            {avg(players[currentIndex].avg)}
+                        </Typography>
+                    </Stack>
+
                 </Stack>
-                <Stack padding={5} bgcolor={"#11171D"}>
-                    <Typography variant="body2" fontSize={40}>
-                        Avg:
-                    </Typography>
-                    <Typography variant="body2" fontSize={70}>
-                        {avg(players[currentIndex].avg)}
-                    </Typography>
-                </Stack>
+
                 <Stack display={"flex"} flex={1}>
                     <InputComponent
                         players={players}
