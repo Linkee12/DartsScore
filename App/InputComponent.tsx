@@ -53,6 +53,20 @@ export default function InputComponent({
         [7, 8, 9],
     ];
 
+    function handleSubmit(){
+        const scoreToSubtract = parseInt(input);
+        if (isNaN(scoreToSubtract)) return;
+        if (scoreToSubtract > 180) { setIsError(true) }
+        const updatedPlayers = [...players];
+        if (scoreToSubtract < 181 && updatedPlayers[currentIndex].score - scoreToSubtract > -1) {
+            updatedPlayers[currentIndex].score -= scoreToSubtract;
+            setPlayers(updatedPlayers);
+            setIsError(false);
+            setInput("");
+            setCurrentIndex(nextIndex(players, currentIndex))
+            players[currentIndex].avg.push(scoreToSubtract)
+        }
+    }
     return (
         <Stack spacing={1}>
             {buttonRows.map((row, i) => (
@@ -70,6 +84,7 @@ export default function InputComponent({
                     ))}
                 </Stack>
             ))}
+            <Stack direction={"row"}>
             <Button
                 variant="contained"
                 sx={numberButtonStyle}
@@ -78,6 +93,14 @@ export default function InputComponent({
             >
                 0
             </Button>
+            <Button
+                variant="contained"
+                sx={numberButtonStyle}
+                onClick={() => handleSubmit()}
+                onMouseDown={(e) => e.preventDefault()}
+            >
+                Enter
+            </Button></Stack>
 
             <TextField
                 label="Score"
@@ -98,19 +121,8 @@ export default function InputComponent({
                 onChange={(e) => setInput(e.target.value)}
                 autoFocus
                 onKeyDown={(e) => {
-                    if (e.code === "Enter" && input !== "") {
-                        const scoreToSubtract = parseInt(input);
-                        if (isNaN(scoreToSubtract)) return;
-                        if (scoreToSubtract > 180) { setIsError(true) }
-                        const updatedPlayers = [...players];
-                        if (scoreToSubtract < 181 && updatedPlayers[currentIndex].score - scoreToSubtract > -1) {
-                            updatedPlayers[currentIndex].score -= scoreToSubtract;
-                            setPlayers(updatedPlayers);
-                            setIsError(false);
-                            setInput("");
-                            setCurrentIndex(nextIndex(players, currentIndex))
-                            players[currentIndex].avg.push(scoreToSubtract)
-                        }
+                    if (e.code === "Enter") {
+                       handleSubmit()
                     }
                 }}
             />

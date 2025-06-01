@@ -40,7 +40,7 @@ export default function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Container sx={{ backgroundColor: '#0F1214', flex: "wrap", p: 2, height: '100vh', maxWidth: "1500px" }}>
+            <Container sx={{ backgroundColor: '#0F1214', flex: "wrap", p: 2, height: '100%', maxWidth: "1500px", minHeight:"100vh"}}>
                 <Outlet />
             </Container>
         </ThemeProvider>

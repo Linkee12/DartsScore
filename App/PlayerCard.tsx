@@ -8,7 +8,7 @@ type PlayerCardProps = {
 const PlayerCard = memo(function PlayerCard(props: PlayerCardProps) {
 
 
-    return (<Card sx={{ width: 200, minWidth: 200, justifyContent: "center", bgcolor: props.score === 0 ? "#BC6249" : "#11171D", color: "#E3DECE" }}>
+    return (<Card sx={{ minWidth: 200,flex:1, justifyContent: "center", bgcolor: props.score === 0 ? "#BC6249" : "#11171D", color: "#E3DECE" }}>
         <CardContent >
             <Typography variant="h4" component="div" fontWeight={600}>
                 {props.name}
