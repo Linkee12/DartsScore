@@ -15,6 +15,7 @@ export default defineConfig({
       manifest: {
         name: 'Darts Score',
         short_name: 'Darts',
+        display: 'fullscreen',
         description: 'Darts Score',
         theme_color: '#000',
         icons: [
