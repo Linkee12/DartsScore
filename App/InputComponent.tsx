@@ -13,6 +13,7 @@ type InputComponentProps = {
     setPlayers: React.Dispatch<React.SetStateAction<Players>>
     currentIndex: number;
     setCurrentIndex: React.Dispatch<React.SetStateAction<number>>
+    matches: boolean
 };
 
 export default function InputComponent({
@@ -20,12 +21,18 @@ export default function InputComponent({
     setPlayers,
     currentIndex,
     setCurrentIndex,
+    matches
 }: InputComponentProps) {
     const [input, setInput] = useState<string>("");
     const [isError, setIsError] = useState(false);
+
     const handleClick = (digit: number) => {
         setInput((prev) => prev + digit.toString());
     };
+    const handleBackspace = () => {
+        setInput((prev) => prev.slice(0, -1));
+    };
+
     function nextIndex(players: Players, currentIndex: number): number {
         const arrLength = players.length;
         let index = (currentIndex + 1) % arrLength;
@@ -53,7 +60,7 @@ export default function InputComponent({
         [7, 8, 9],
     ];
 
-    function handleSubmit(){
+    function handleSubmit() {
         const scoreToSubtract = parseInt(input);
         if (isNaN(scoreToSubtract)) return;
         if (scoreToSubtract > 180) { setIsError(true) }
@@ -85,27 +92,41 @@ export default function InputComponent({
                 </Stack>
             ))}
             <Stack direction={"row"}>
-            <Button
-                variant="contained"
-                sx={numberButtonStyle}
-                onClick={() => handleClick(0)}
-                onMouseDown={(e) => e.preventDefault()}
-            >
-                0
-            </Button>
-            <Button
-                variant="contained"
-                sx={numberButtonStyle}
-                onClick={() => handleSubmit()}
-                onMouseDown={(e) => e.preventDefault()}
-            >
-                Enter
-            </Button></Stack>
+                <Button
+                    variant="contained"
+                    sx={numberButtonStyle}
+                    onClick={() => handleBackspace()}
+                    onMouseDown={(e) => e.preventDefault()}
+                >
+                    ⌫
+                </Button>
+                <Button
+                    variant="contained"
+                    sx={numberButtonStyle}
+                    onClick={() => handleClick(0)}
+                    onMouseDown={(e) => e.preventDefault()}
+                >
+                    0
+                </Button>
+                <Button
+                    variant="contained"
+                    sx={numberButtonStyle}
+                    onClick={() => handleSubmit()}
+                    onMouseDown={(e) => e.preventDefault()}
+                >
+                    ⏎
+                </Button></Stack>
 
             <TextField
                 label="Score"
                 type="number"
                 variant="filled"
+                inputMode="none"
+                slotProps={{
+                    input: {
+                        readOnly: matches ? false : true,
+                    },
+                }}
                 value={input}
                 color={isError ? "error" : "secondary"}
                 sx={{
@@ -122,7 +143,7 @@ export default function InputComponent({
                 autoFocus
                 onKeyDown={(e) => {
                     if (e.code === "Enter") {
-                       handleSubmit()
+                        handleSubmit()
                     }
                 }}
             />

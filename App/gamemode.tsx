@@ -25,7 +25,7 @@ export default function Gamemode() {
                     justifyContent: 'center',
                     alignItems: 'center',
                     flex: 1,
-                    fontSize: 'clamp(30px, 10vw, 170px)',
+                    fontSize: 'clamp(100px, 10vw, 170px)',
                     fontWeight: "bold",
                     borderRadius: 4,
                     color: props.textColor,
@@ -44,7 +44,8 @@ export default function Gamemode() {
             sx={{
                 display: "flex",
                 flexDirection: "column",
-                height: "100%",
+                justifyContent: "space-around",
+                height: "97vh",
                 maxWidth: "100%",
             }}
         >
