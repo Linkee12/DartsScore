@@ -1,35 +1,36 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import { VitePWA } from 'vite-plugin-pwa';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
-  plugins: [react(),
+  base: "/DartsScore/",
+  plugins: [
+    react(),
     VitePWA({
-      registerType: 'autoUpdate',
+      registerType: "autoUpdate",
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+        globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
       },
-      injectRegister: 'auto',
+      injectRegister: "auto",
       manifest: {
-        name: 'Darts Score',
-        short_name: 'Darts',
-        display: 'fullscreen',
-        description: 'Darts Score',
-        theme_color: '#000',
+        name: "Darts Score",
+        short_name: "Darts",
+        display: "fullscreen",
+        description: "Darts Score",
+        theme_color: "#000",
         icons: [
           {
-            src: '/icons/icon.png',
-            sizes: '192x192',
-            type: 'image/png'
+            src: "/icons/icon.png",
+            sizes: "192x192",
+            type: "image/png",
           },
           {
-            src: '/icons/largerIcon.png',
-            sizes: '512x512',
-            type: 'image/png'
-          }
-        ]
-      }
-    })
+            src: "/icons/largerIcon.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+        ],
+      },
+    }),
   ],
 });
-
