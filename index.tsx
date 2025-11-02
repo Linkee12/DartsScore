@@ -5,7 +5,7 @@ import "./App/App.css";
 import App from "./App/App";
 import Gamemode from "./App/Gamemode";
 import Player from "./App/Player";
-import Game from "./App/Game";
+import Game from "./App/Game/Game";
 
 const root = document.getElementById("root");
 if (root)

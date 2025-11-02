@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router";
 import PlayerCard from "./PlayerCard";
 import avg from "../assets/avg";
-import InputComponent from "./InputComponent";
+import InputComponent from "../Players/InputComponent";
 import "./Game.css";
 
 export type Players = { name: string; score: number; avg: number[] }[];

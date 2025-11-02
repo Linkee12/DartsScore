@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Players } from "./Game";
+import { Players } from "../Game/Game";
 import "./InputComponent.css";
 
 type Player = {
