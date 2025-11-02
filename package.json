@@ -8,7 +8,8 @@
   "main": "index.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "vite"
+    "start": "vite",
+    "build": "vite build"
   },
   "dependencies": {
     "@base-ui-components/react": "^1.0.0-alpha.5",
