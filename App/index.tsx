@@ -1,11 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { HashRouter, Routes, Route } from "react-router";
-import "./App/App.css";
-import App from "./App/App";
-import Gamemode from "./App/Mode/Gamemode";
-import Player from "./App/Players/Player";
-import Game from "./App/Game/Game";
+import App from "./App";
+import Gamemode from "./Mode/Gamemode";
+import Player from "./Players/Player";
+import Game from "./Game/Game";
 
 const root = document.getElementById("root");
 if (root)

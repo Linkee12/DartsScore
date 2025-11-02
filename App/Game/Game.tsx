@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router";
 import PlayerCard from "../Players/PlayerCard";
-import avg from "../assets/avg";
-import InputComponent from "../Players/InputComponent";
+import avg from "../utils/avg";
+import InputComponent from "./InputComponent";
 import "./Game.css";
 
 export type Players = { name: string; score: number; avg: number[] }[];
@@ -15,20 +15,15 @@ export default function Game() {
 
   return (
     <div className="game-container">
-      <div className={"game-top-section"}>
-        <div className="current-player-display">
+      <div className="current-player-display">
+        <div className="currentPlayerRow">
           <h1 className={`current-player-name`}>
             {players[currentIndex].name}
           </h1>
           <div className={`current-player-score `}>
             {players[currentIndex].score}
           </div>
-          <div className="current-player-avg">
-            <p>Avg:&nbsp;</p>
-            <p>{avg(players[currentIndex].avg)}</p>
-          </div>
         </div>
-
         <div className="input-component-wrapper">
           <InputComponent
             players={players}
@@ -36,8 +31,13 @@ export default function Game() {
             currentIndex={currentIndex}
             setCurrentIndex={setCurrentIndex}
           />
+          <div className="current-player-avg">
+            <p>Avg:&nbsp;</p>
+            <p>{avg(players[currentIndex].avg)}</p>
+          </div>
         </div>
       </div>
+
       <div className="player-cards-container">
         {sortedPlayers.map((e, key) => (
           <PlayerCard name={e.name} score={e.score} avg={e.avg} key={key} />

@@ -22,10 +22,13 @@ p {
     display: flex;
     flex-direction: column;
     flex: 1;
+    gap: 2rem;
     background-color: #11171D;
     padding: 1rem;
     border-radius: 20px;
     position: relative;
+    color: #E3DECE;
+    justify-content: space-between;
 }
 
 .current-player-name {
@@ -37,18 +40,16 @@ p {
 }
 
 .current-player-avg {
-    padding: 40px;
     display: flex;
     flex-direction: row;
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
     font-size: 3rem;
 }
 
 .input-component-wrapper {
     display: flex;
     flex: 1;
+    max-width: 50vw;
+    justify-content: space-between;
 }
 
 .player-cards-container {
@@ -56,4 +57,11 @@ p {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 24px;
+}
+
+.currentPlayerRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 40px;
 }

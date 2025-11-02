@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import avg from "../assets/avg";
+import avg from "../utils/avg";
 import "./PlayerCard.css";
 
 type PlayerCardProps = {

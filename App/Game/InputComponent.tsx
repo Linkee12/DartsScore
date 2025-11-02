@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Players } from "../Game/Game";
+import { Players } from "./Game";
 import "./InputComponent.css";
 
 type Player = {
@@ -67,52 +67,8 @@ export default function InputComponent({
     }
   }
 
-  const buttonRows = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-  ];
-
   return (
     <div className="input-container">
-      {buttonRows.map((row, i) => (
-        <div key={i} className="button-row">
-          {row.map((num) => (
-            <button
-              key={num}
-              onMouseDown={(e) => e.preventDefault()}
-              className="number-button"
-              onClick={() => handleClick(num)}
-            >
-              {num}
-            </button>
-          ))}
-        </div>
-      ))}
-      <div className="button-row">
-        <button
-          className="number-button"
-          onClick={() => handleBackspace()}
-          onMouseDown={(e) => e.preventDefault()}
-        >
-          ⌫
-        </button>
-        <button
-          className="number-button"
-          onClick={() => handleClick(0)}
-          onMouseDown={(e) => e.preventDefault()}
-        >
-          0
-        </button>
-        <button
-          className="number-button"
-          onClick={() => handleSubmit()}
-          onMouseDown={(e) => e.preventDefault()}
-        >
-          ⏎
-        </button>
-      </div>
-
       <input
         placeholder="Score"
         type="number"
@@ -127,6 +83,27 @@ export default function InputComponent({
           }
         }}
       />
+      <button
+        className="number-button"
+        onClick={() => handleBackspace()}
+        onMouseDown={(e) => e.preventDefault()}
+      >
+        ⌫
+      </button>
+      <button
+        className="number-button"
+        onClick={() => handleClick(0)}
+        onMouseDown={(e) => e.preventDefault()}
+      >
+        0
+      </button>
+      <button
+        className="number-button"
+        onClick={() => handleSubmit()}
+        onMouseDown={(e) => e.preventDefault()}
+      >
+        ⏎
+      </button>
     </div>
   );
 }

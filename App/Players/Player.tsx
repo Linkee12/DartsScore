@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import Logo from "../assets/logo.svg?url";
 import "./Player.css";
 import { FaPlay, FaTrash } from "react-icons/fa";
+import Logo from "../../public/icons/logo.svg";
 
 export default function Player() {
   type Players = {
@@ -21,20 +21,22 @@ export default function Player() {
         <h2 className="player-title">Add player:</h2>
         <img src={Logo} className="player-logo" alt="logo"></img>
       </div>
-      {players.map((e, i) => (
-        <div className="player-item" key={i}>
-          <div className="player-name">{e.name}</div>
-          <button
-            className="delete-button"
-            onClick={() =>
-              // eslint-disable-next-line sonarjs/no-nested-functions
-              setPlayers((prev) => prev.filter((current) => current !== e))
-            }
-          >
-            <FaTrash size="1.5em" />
-          </button>
-        </div>
-      ))}
+      <div className="player-rows-container">
+        {players.map((e, i) => (
+          <div className="player-item" key={i}>
+            <div className="player-name">{e.name}</div>
+            <button
+              className="delete-button"
+              onClick={() =>
+                // eslint-disable-next-line sonarjs/no-nested-functions
+                setPlayers((prev) => prev.filter((current) => current !== e))
+              }
+            >
+              <FaTrash size="1.5em" />
+            </button>
+          </div>
+        ))}
+      </div>
 
       <div className="player-input-row">
         <input

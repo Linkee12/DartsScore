@@ -1,7 +1,6 @@
 .player-container {
     display: flex;
     flex-direction: column;
-    flex: 1;
     height: 100%;
     gap: 16px;
 }
@@ -69,8 +68,8 @@
 }
 
 .play-button {
-    height: 3.5rem;
     background-color: #11171D;
+    min-height: 3.5rem;
     color: #c0c0c0;
     border: none;
     font-size: large;
@@ -79,4 +78,13 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
+    border-radius: 0.5rem;
+}
+
+
+.player-rows-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    gap: 0.5rem;
 }
