@@ -1,8 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
-import Icon from "./assets/icon.png"
-import LargerIcon from "./assets/largerIcon.png"
 
 export default defineConfig({
   plugins: [react(),

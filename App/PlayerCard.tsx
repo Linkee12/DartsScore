@@ -1,26 +1,33 @@
-import { CardContent, Typography, Card } from "@mui/material";
-import React, { memo } from "react"
+import React, { memo } from "react";
 import avg from "../assets/avg";
+import "./PlayerCard.css";
+
 type PlayerCardProps = {
-    name: string, score: number, avg: number[] | undefined
-}
+  name: string;
+  score: number;
+  avg: number[] | undefined;
+};
 
 const PlayerCard = memo(function PlayerCard(props: PlayerCardProps) {
-
-
-    return (<Card sx={{ minWidth: 200,flex:1, justifyContent: "center", bgcolor: props.score === 0 ? "#BC6249" : "#11171D", color: "#E3DECE" }}>
-        <CardContent >
-            <Typography variant="h4" component="div" fontWeight={600}>
-                {props.name}
-            </Typography>
-            <Typography variant="h5"> Score: </Typography>
-            <Typography variant={props.score != 0 ? "h1" : "h4"} component="div" fontWeight={700}>
-                {props.score != 0 ? props.score : "Congrat Bro :))"}
-            </Typography>
-            <Typography variant="body2">
-                Avarage:{avg(props.avg ? props.avg : [])}
-            </Typography>
-        </CardContent>
-    </Card>)
-})
-export default PlayerCard
+  return (
+    <div
+      className={`player-card ${props.score === 0 ? "player-card-winner" : "player-card-playing"}`}
+    >
+      <h4 className="player-card-name">{props.name}</h4>
+      <h5 className="player-card-score-label"> Score: </h5>
+      <div
+        className={
+          props.score !== 0
+            ? "player-card-score-value"
+            : "player-card-score-finished"
+        }
+      >
+        {props.score != 0 ? props.score : "Congrat Bro :))"}
+      </div>
+      <p className="player-card-avg">
+        Avarage:{avg(props.avg ? props.avg : [])}
+      </p>
+    </div>
+  );
+});
+export default PlayerCard;
