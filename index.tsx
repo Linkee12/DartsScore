@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { HashRouter, Routes, Route } from "react-router";
 import "./App/App.css";
 import App from "./App/App";
 import Gamemode from "./App/Mode/Gamemode";
@@ -10,7 +10,7 @@ import Game from "./App/Game/Game";
 const root = document.getElementById("root");
 if (root)
   ReactDOM.createRoot(root).render(
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route element={<App />}>
           <Route path="/" element={<Gamemode />} />
@@ -18,5 +18,5 @@ if (root)
           <Route path="game" element={<Game />} />
         </Route>
       </Routes>
-    </BrowserRouter>,
+    </HashRouter>,
   );
