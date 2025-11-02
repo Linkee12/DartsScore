@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router";
-import PlayerCard from "./PlayerCard";
+import PlayerCard from "../Players/PlayerCard";
 import avg from "../assets/avg";
 import InputComponent from "../Players/InputComponent";
 import "./Game.css";
