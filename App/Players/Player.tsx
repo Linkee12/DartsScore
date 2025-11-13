@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import "./Player.css";
 import { FaPlay, FaTrash } from "react-icons/fa";
-import Logo from "../../public/icons/logo.svg";
+import Logo from "/public/icons/logo.svg";
 
 export default function Player() {
   type Players = {

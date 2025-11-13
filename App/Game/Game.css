@@ -32,10 +32,15 @@ p {
 }
 
 .current-player-name {
+    display: flex;
     font-size: clamp(50px, 10vw, 200px);
+    align-items: center;
 }
 
 .current-player-score {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
     font-size: clamp(50px, 14vw, 300px);
 }
 
@@ -47,8 +52,6 @@ p {
 
 .input-component-wrapper {
     display: flex;
-    flex: 1;
-    max-width: 50vw;
     justify-content: space-between;
 }
 
@@ -64,4 +67,11 @@ p {
     flex-direction: row;
     justify-content: space-around;
     gap: 40px;
+    height: 100%;
+}
+
+.divider {
+    display: flex;
+    flex: 1;
+    justify-content: center;
 }

@@ -25,15 +25,19 @@ export default function Game() {
           </div>
         </div>
         <div className="input-component-wrapper">
-          <InputComponent
-            players={players}
-            setPlayers={setPlayers}
-            currentIndex={currentIndex}
-            setCurrentIndex={setCurrentIndex}
-          />
-          <div className="current-player-avg">
-            <p>Avg:&nbsp;</p>
-            <p>{avg(players[currentIndex].avg)}</p>
+          <div className="divider">
+            <InputComponent
+              players={players}
+              setPlayers={setPlayers}
+              currentIndex={currentIndex}
+              setCurrentIndex={setCurrentIndex}
+            />
+          </div>
+          <div className="divider">
+            <div className="current-player-avg">
+              <p>Avg:&nbsp;</p>
+              <p>{avg(players[currentIndex].avg)}</p>
+            </div>
           </div>
         </div>
       </div>
