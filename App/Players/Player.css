@@ -3,6 +3,8 @@
     flex-direction: column;
     height: 100%;
     gap: 16px;
+    box-sizing: border-box;
+    padding: 10px;
 }
 
 .player-header {
