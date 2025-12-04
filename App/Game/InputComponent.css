@@ -11,13 +11,13 @@
 }
 
 .number-button {
-    margin: 2px;
+    height: 3.5rem;
     font-weight: bold;
     font-size: 24px;
     flex: 1;
     background-color: #11171D;
-    color: #c0c0c0;
-    border: 1px solid #c0c0c0;
+    color: #888888;
+    border: 1px solid #555555;
     border-radius: 4px;
     padding: 8px 16px;
     cursor: pointer;
@@ -33,7 +33,7 @@
     border: 1px solid #555;
     border-radius: 4px;
     padding: 16.5px 14px;
-    width: 100%;
+    width: 50%;
     box-sizing: border-box;
     font-size: 1rem;
 }
@@ -51,7 +51,6 @@
     border-color: #d32f2f;
     color: #d32f2f;
 }
-
 
 
 .score-input::-webkit-outer-spin-button,

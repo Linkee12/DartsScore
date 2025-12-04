@@ -1,22 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import "./Player.css";
 import { FaPlay, FaTrash } from "react-icons/fa";
 import Logo from "/public/icons/logo.svg";
+import "./Player.css";
 
-export default function Player() {
-  type Players = {
-    name: string;
-    score: number;
-    avg: number[];
-  };
-  const [players, setPlayers] = useState<Players[]>([]);
+export type Player = {
+  name: string;
+  score: number;
+  avg: number[];
+  roundScores: number[];
+};
+
+export default function AddPlayer() {
+  const [players, setPlayers] = useState<Player[]>([]);
   const [input, setInput] = useState("");
   const navigate = useNavigate();
   const { score } = useParams();
+  const listRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (listRef.current) {
+      listRef.current.scrollTop = listRef.current.scrollHeight;
+    }
+  }, [players]);
+
   if (!score) return;
   return (
-    <div className="player-container">
+    <div className="player-container" ref={listRef}>
       <div className="player-header">
         <h2 className="player-title">Add player:</h2>
         <img src={Logo} className="player-logo" alt="logo"></img>
@@ -55,7 +65,12 @@ export default function Player() {
               if (input != "") {
                 setPlayers((p) => [
                   ...p,
-                  { name: input, score: parseInt(score), avg: [] },
+                  {
+                    name: input,
+                    score: parseInt(score),
+                    avg: [],
+                    roundScores: [],
+                  },
                 ]);
                 setInput("");
               }
@@ -66,7 +81,7 @@ export default function Player() {
       {players.length > 0 ? (
         <button
           className="play-button"
-          onClick={() => navigate("/game", { state: players })}
+          onClick={() => navigate(`/game/${score}`, { state: players })}
         >
           <FaPlay />
           {"Play"}

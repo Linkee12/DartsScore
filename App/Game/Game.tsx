@@ -1,20 +1,44 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useParams } from "react-router";
+import { Player } from "../Players/Player";
 import PlayerCard from "../Players/PlayerCard";
 import avg from "../utils/avg";
 import InputComponent from "./InputComponent";
 import "./Game.css";
-
-export type Players = { name: string; score: number; avg: number[] }[];
+import ConfirmReset from "../ConfirmReset/ConfirmReset";
 
 export default function Game() {
   const location = useLocation();
-  const [players, setPlayers] = useState<Players>(location.state);
+  const [players, setPlayers] = useState<Player[]>(location.state);
   const [currentIndex, setCurrentIndex] = useState(0);
   const sortedPlayers = [...players].sort((a, b) => a.score - b.score);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const { score } = useParams();
+  const handleReset = () => {
+    setShowConfirm(true);
+  };
+
+  const handleConfirm = () => {
+    setShowConfirm(false);
+    if (score) {
+      const resetPlayers = players.map((player) => {
+        player.roundScores = [];
+        player.score = Number(score);
+        return player;
+      });
+      setPlayers(resetPlayers);
+    }
+  };
+
+  const handleCancel = () => {
+    setShowConfirm(false);
+  };
 
   return (
     <div className="game-container">
+      {showConfirm && (
+        <ConfirmReset onConfirm={handleConfirm} onCancel={handleCancel} />
+      )}
       <div className="current-player-display">
         <div className="currentPlayerRow">
           <h1 className={`current-player-name`}>
@@ -31,6 +55,7 @@ export default function Game() {
               setPlayers={setPlayers}
               currentIndex={currentIndex}
               setCurrentIndex={setCurrentIndex}
+              handleReset={handleReset}
             />
           </div>
           <div className="divider">

@@ -33,7 +33,7 @@ p {
 
 .current-player-name {
     display: flex;
-    font-size: clamp(50px, 10vw, 200px);
+    font-size: clamp(50px, 10vw, 600px);
     align-items: center;
 }
 
@@ -41,7 +41,7 @@ p {
     display: flex;
     align-items: center;
     font-weight: bold;
-    font-size: clamp(50px, 14vw, 300px);
+    font-size: clamp(50px, 14vw, 600px);
 }
 
 .current-player-avg {
@@ -74,4 +74,24 @@ p {
     display: flex;
     flex: 1;
     justify-content: center;
+}
+
+@media (orientation: portrait) {
+
+    .currentPlayerRow {
+        flex-direction: column;
+    }
+
+    .input-component-wrapper {
+        flex-direction: column-reverse;
+        gap: 1rem;
+    }
+
+
+    .current-player-name,
+    .current-player-score {
+        justify-content: center;
+        font-size: clamp(100px, 14vw, 600px);
+    }
+
 }

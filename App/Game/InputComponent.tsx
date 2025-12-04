@@ -1,19 +1,14 @@
 import React from "react";
 import { useState } from "react";
-import { Players } from "./Game";
 import "./InputComponent.css";
-
-type Player = {
-  name: string;
-  score: number;
-  avg: number[];
-};
+import { Player } from "../Players/Player";
 
 type InputComponentProps = {
   players: Player[];
-  setPlayers: React.Dispatch<React.SetStateAction<Players>>;
+  setPlayers: React.Dispatch<React.SetStateAction<Player[]>>;
   currentIndex: number;
   setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
+  handleReset: () => void;
 };
 
 export default function InputComponent({
@@ -21,29 +16,38 @@ export default function InputComponent({
   setPlayers,
   currentIndex,
   setCurrentIndex,
+  handleReset,
 }: InputComponentProps) {
   const [input, setInput] = useState<string>("");
   const [isError, setIsError] = useState(false);
 
-  const handleClick = (digit: number) => {
-    setInput((prev) => prev + digit.toString());
-  };
-  const handleBackspace = () => {
-    setInput((prev) => prev.slice(0, -1));
-  };
+  function goBack() {
+    const prevIdx = findActiveIndex(players, currentIndex, true);
+    setCurrentIndex(prevIdx);
+    players[prevIdx].score += players[prevIdx].roundScores.pop() ?? 0;
+  }
 
-  function nextIndex(players: Players, currentIndex: number): number {
+  function findActiveIndex(
+    players: Player[],
+    currentIndex: number,
+    rev: boolean = false,
+  ): number {
     const arrLength = players.length;
-    let index = (currentIndex + 1) % arrLength;
+    let index = rev
+      ? (currentIndex - 1 + arrLength) % arrLength
+      : (currentIndex + 1) % arrLength;
     let checked = 0;
 
     while (checked < arrLength) {
       if (players[index].score !== 0) {
         return index;
       }
-      index = (index + 1) % arrLength;
+      index = rev
+        ? (index - 1 + arrLength) % arrLength
+        : (index + 1) % arrLength;
       checked++;
     }
+
     return currentIndex;
   }
 
@@ -62,8 +66,9 @@ export default function InputComponent({
       setPlayers(updatedPlayers);
       setIsError(false);
       setInput("");
-      setCurrentIndex(nextIndex(players, currentIndex));
+      setCurrentIndex(findActiveIndex(players, currentIndex));
       players[currentIndex].avg.push(scoreToSubtract);
+      players[currentIndex].roundScores.push(scoreToSubtract);
     }
   }
 
@@ -85,17 +90,10 @@ export default function InputComponent({
       />
       <button
         className="number-button"
-        onClick={() => handleBackspace()}
+        onClick={() => goBack()}
         onMouseDown={(e) => e.preventDefault()}
       >
-        ⌫
-      </button>
-      <button
-        className="number-button"
-        onClick={() => handleClick(0)}
-        onMouseDown={(e) => e.preventDefault()}
-      >
-        0
+        ←
       </button>
       <button
         className="number-button"
@@ -103,6 +101,13 @@ export default function InputComponent({
         onMouseDown={(e) => e.preventDefault()}
       >
         ⏎
+      </button>
+      <button
+        className="number-button"
+        onClick={() => handleReset()}
+        onMouseDown={(e) => e.preventDefault()}
+      >
+        ↻
       </button>
     </div>
   );
