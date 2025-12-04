@@ -77,13 +77,13 @@ export default function InputComponent({
       <input
         placeholder="Score"
         type="number"
-        inputMode="none"
         value={input}
         className={`score-input ${isError ? "error" : ""}`}
         onChange={(e) => setInput(e.target.value)}
         autoFocus
         onKeyDown={(e) => {
-          if (e.code === "Enter") {
+          if (e.key === "Enter") {
+            e.preventDefault();
             handleSubmit();
           }
         }}
@@ -94,13 +94,6 @@ export default function InputComponent({
         onMouseDown={(e) => e.preventDefault()}
       >
         ←
-      </button>
-      <button
-        className="number-button"
-        onClick={() => handleSubmit()}
-        onMouseDown={(e) => e.preventDefault()}
-      >
-        ⏎
       </button>
       <button
         className="number-button"
