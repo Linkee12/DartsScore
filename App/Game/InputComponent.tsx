@@ -75,8 +75,10 @@ export default function InputComponent({
   return (
     <div className="input-container">
       <input
-        placeholder="Score"
-        type="number"
+        type="tel"
+        inputMode="numeric"
+        pattern="[0-9]*"
+        autoComplete="off"
         value={input}
         className={`score-input ${isError ? "error" : ""}`}
         onChange={(e) => setInput(e.target.value)}

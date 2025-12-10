@@ -7,10 +7,11 @@ p {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    height: 100%;
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
+    height: auto;
+    overflow: visible;
 }
 
 .game-top-section {
@@ -34,15 +35,17 @@ p {
 
 .current-player-name {
     display: flex;
-    font-size: clamp(50px, 10vw, 600px);
     align-items: center;
+    justify-content: center;
+    width: 50vw;
 }
 
 .current-player-score {
     display: flex;
     align-items: center;
+    justify-content: center;
     font-weight: bold;
-    font-size: clamp(50px, 14vw, 600px);
+    width: 50vw;
 }
 
 .current-player-avg {
@@ -66,7 +69,8 @@ p {
 .currentPlayerRow {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: space-between;
     height: 100%;
 }
 

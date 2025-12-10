@@ -6,6 +6,7 @@ import avg from "../utils/avg";
 import InputComponent from "./InputComponent";
 import "./Game.css";
 import ConfirmReset from "../ConfirmReset/ConfirmReset";
+import { AutoTextSize } from "auto-text-size";
 
 export default function Game() {
   const location = useLocation();
@@ -42,10 +43,14 @@ export default function Game() {
       <div className="current-player-display">
         <div className="currentPlayerRow">
           <h1 className={`current-player-name`}>
-            {players[currentIndex].name}
+            <AutoTextSize maxFontSizePx={250}>
+              {players[currentIndex].name}
+            </AutoTextSize>
           </h1>
           <div className={`current-player-score `}>
-            {players[currentIndex].score}
+            <AutoTextSize maxFontSizePx={250}>
+              {players[currentIndex].score}
+            </AutoTextSize>
           </div>
         </div>
         <div className="input-component-wrapper">
