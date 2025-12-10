@@ -10,7 +10,7 @@ p {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-    height: auto;
+    height: 100dvh;
     overflow: visible;
 }
 
@@ -84,6 +84,7 @@ p {
 
     .currentPlayerRow {
         flex-direction: column;
+        height: 100dvh;
     }
 
     .input-component-wrapper {
