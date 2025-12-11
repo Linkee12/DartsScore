@@ -75,6 +75,8 @@ export default function InputComponent({
   return (
     <div className="input-container">
       <input
+        name="customInput123"
+        id="customInput123"
         type="tel"
         inputMode="numeric"
         pattern="[0-9]*"
