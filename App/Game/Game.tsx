@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useLocation, useParams } from "react-router";
 import { Player } from "../Players/Player";
 import PlayerCard from "../Players/PlayerCard";
@@ -18,7 +18,36 @@ export default function Game() {
   const handleReset = () => {
     setShowConfirm(true);
   };
+  const inputWrapperRef = useRef<HTMLDivElement>(null);
+  
+useEffect(() => {
+  const adjustInputWrapper = () => {
+    if (!inputWrapperRef.current) return;
 
+    if (window.matchMedia("(orientation: portrait)").matches) {
+      const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+      inputWrapperRef.current.style.maxHeight = `${vh}px`;
+    } else {
+      inputWrapperRef.current.style.maxHeight = "";
+    }
+  };
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", adjustInputWrapper);
+  } else {
+    window.addEventListener("resize", adjustInputWrapper);
+  }
+  adjustInputWrapper();
+
+  return () => {
+    if (window.visualViewport) {
+      window.visualViewport.removeEventListener("resize", adjustInputWrapper);
+    } else {
+      window.removeEventListener("resize", adjustInputWrapper);
+    }
+  };
+}, []);
+
+  
   const handleConfirm = () => {
     setShowConfirm(false);
     if (score) {
@@ -53,7 +82,7 @@ export default function Game() {
             </AutoTextSize>
           </div>
         </div>
-        <div className="input-component-wrapper">
+        <div className="input-component-wrapper" ref={inputWrapperRef}>
           <div className="divider">
             <InputComponent
               players={players}
