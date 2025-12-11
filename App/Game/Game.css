@@ -84,7 +84,6 @@ p {
 
     .currentPlayerRow {
         flex-direction: column;
-        height: 100dvh;
     }
 
     .input-component-wrapper {
