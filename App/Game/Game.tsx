@@ -19,41 +19,43 @@ export default function Game() {
     setShowConfirm(true);
   };
   const inputWrapperRef = useRef<HTMLDivElement>(null);
-  
-useEffect(() => {
-  const adjustInputWrapper = () => {
-    if (!inputWrapperRef.current) return;
 
-    if (window.matchMedia("(orientation: portrait)").matches) {
-      const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-      inputWrapperRef.current.style.maxHeight = `${vh}px`;
-    } else {
-      inputWrapperRef.current.style.maxHeight = "";
-    }
-  };
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener("resize", adjustInputWrapper);
-  } else {
-    window.addEventListener("resize", adjustInputWrapper);
-  }
-  adjustInputWrapper();
+  useEffect(() => {
+    const adjustInputWrapper = () => {
+      if (!inputWrapperRef.current) return;
 
-  return () => {
+      if (window.matchMedia("(orientation: portrait)").matches) {
+        const vh = window.visualViewport
+          ? window.visualViewport.height
+          : window.innerHeight;
+        inputWrapperRef.current.style.maxHeight = `${vh}px`;
+      } else {
+        inputWrapperRef.current.style.maxHeight = "";
+      }
+    };
     if (window.visualViewport) {
-      window.visualViewport.removeEventListener("resize", adjustInputWrapper);
+      window.visualViewport.addEventListener("resize", adjustInputWrapper);
     } else {
-      window.removeEventListener("resize", adjustInputWrapper);
+      window.addEventListener("resize", adjustInputWrapper);
     }
-  };
-}, []);
+    adjustInputWrapper();
 
-  
+    return () => {
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener("resize", adjustInputWrapper);
+      } else {
+        window.removeEventListener("resize", adjustInputWrapper);
+      }
+    };
+  }, []);
+
   const handleConfirm = () => {
     setShowConfirm(false);
     if (score) {
       const resetPlayers = players.map((player) => {
         player.roundScores = [];
         player.score = Number(score);
+        player.avg = [];
         return player;
       });
       setPlayers(resetPlayers);
