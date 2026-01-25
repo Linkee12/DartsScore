@@ -39,7 +39,6 @@ p {
     align-items: center;
     justify-content: center;
     width: 50vw;
-
     font-size: 65px;
 }
 
@@ -96,6 +95,9 @@ p {
         gap: 1rem;
     }
 
+    .current-player-name {
+        width: 90vw;
+    }
 
     .current-player-name,
     .current-player-score {
