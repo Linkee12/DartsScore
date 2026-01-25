@@ -100,7 +100,7 @@ p {
     .current-player-name,
     .current-player-score {
         justify-content: center;
-        height: 150px;
+        height: 110px;
     }
 
 }
