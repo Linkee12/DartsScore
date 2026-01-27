@@ -5,8 +5,8 @@ import PlayerCard from "../Players/PlayerCard";
 import avg from "../utils/avg";
 import InputComponent from "./InputComponent";
 import "./Game.css";
+import styles from "./game.module.css";
 import ConfirmReset from "../ConfirmReset/ConfirmReset";
-import { AutoTextSize } from "auto-text-size";
 
 export default function Game() {
   const location = useLocation();
@@ -67,21 +67,17 @@ export default function Game() {
   };
 
   return (
-    <div className="game-container">
+    <div className={styles["game-container"]}>
       {showConfirm && (
         <ConfirmReset onConfirm={handleConfirm} onCancel={handleCancel} />
       )}
       <div className="current-player-display">
         <div className="currentPlayerRow">
           <h1 className={`current-player-name`}>
-            <AutoTextSize maxFontSizePx={250}>
-              {players[currentIndex].name}
-            </AutoTextSize>
+            {players[currentIndex].name}
           </h1>
           <div className={`current-player-score `}>
-            <AutoTextSize maxFontSizePx={250}>
-              {players[currentIndex].score}
-            </AutoTextSize>
+            {players[currentIndex].score}
           </div>
         </div>
         <div className="input-component-wrapper" ref={inputWrapperRef}>
