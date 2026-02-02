@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { FaPlay, FaTrash } from "react-icons/fa";
 import Logo from "/public/icons/logo.svg";
-import "./Player.css";
+import styles from "./player.module.css";
 
 export type Player = {
   name: string;
@@ -26,17 +26,17 @@ export default function AddPlayer() {
 
   if (!score) return;
   return (
-    <div className="player-container" ref={listRef}>
-      <div className="player-header">
-        <h2 className="player-title">Add player:</h2>
-        <img src={Logo} className="player-logo" alt="logo"></img>
+    <div className={styles.playerContainer} ref={listRef}>
+      <div className={styles.playerHeader}>
+        <h2 className={styles.playerTitle}>Add player:</h2>
+        <img src={Logo} className={styles.playerLogo} alt="logo"></img>
       </div>
-      <div className="player-rows-container">
+      <div className={styles.playerRowsContainer}>
         {players.map((e, i) => (
-          <div className="player-item" key={i}>
-            <div className="player-name">{e.name}</div>
+          <div className={styles.playerItem} key={i}>
+            <div className={styles.playerName}>{e.name}</div>
             <button
-              className="delete-button"
+              className={styles.deleteButton}
               onClick={() =>
                 // eslint-disable-next-line sonarjs/no-nested-functions
                 setPlayers((prev) => prev.filter((current) => current !== e))
@@ -48,9 +48,9 @@ export default function AddPlayer() {
         ))}
       </div>
 
-      <div className="player-input-row">
+      <div className={styles.playerInputRow}>
         <input
-          className="player-input"
+          className={styles.playerInput}
           id="playerName"
           placeholder="Player Name"
           value={input}
@@ -80,7 +80,7 @@ export default function AddPlayer() {
       </div>
       {players.length > 0 ? (
         <button
-          className="play-button"
+          className={styles.playButton}
           onClick={() => navigate(`/game/${score}`, { state: players })}
         >
           <FaPlay />

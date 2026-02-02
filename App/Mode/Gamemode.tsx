@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import "./Gamemode.css";
+import styles from "./gamemode.module.css";
 
 export default function Gamemode() {
   type GameProps = {
@@ -63,14 +63,10 @@ export default function Gamemode() {
       <div
         ref={buttonRef}
         onClick={() => navigate(`/player/${props.score}`)}
-        className="game-mode-button"
+        className={styles.gameModeButton}
         style={{ backgroundColor: props.bgColor, color: props.textColor }}
       >
-        <div
-          ref={contentRef}
-          className="game-mode-button-content"
-          style={{ fontSize: `${fontSize}px` }}
-        >
+        <div ref={contentRef} style={{ fontSize: `${fontSize}px` }}>
           {props.score}
         </div>
       </div>
@@ -78,7 +74,7 @@ export default function Gamemode() {
   }
 
   return (
-    <div className="gamemodeContainer">
+    <div className={styles.gamemodeContainer}>
       <GameModeButton score={301} bgColor={"#0D2847"} textColor={"#3B9EFF"} />
       <GameModeButton score={501} bgColor={"#331E0B"} textColor={"#FF801F"} />
       <GameModeButton score={701} bgColor={"#132D21"} textColor={"#32B074"} />

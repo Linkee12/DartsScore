@@ -3,7 +3,7 @@ p {
     margin: 0;
 }
 
-.game-container {
+.gameContainer {
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -14,14 +14,14 @@ p {
     overflow: visible;
 }
 
-.game-top-section {
+.gameTopSection {
     display: flex;
     flex: 1;
     gap: 40px;
     color: #E3DECE;
 }
 
-.current-player-display {
+.currentPlayerDisplay {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -32,7 +32,7 @@ p {
     color: #E3DECE;
 }
 
-.current-player-name {
+.currentPlayerName {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,27 +40,29 @@ p {
     font-size: 10vw
 }
 
-.current-player-score {
+.currentPlayerScore {
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     width: 50vw;
-    font-size: 15vw
+    font-size: 15vw;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
-.current-player-avg {
+.currentPlayerAvg {
     display: flex;
     flex-direction: row;
     font-size: 3rem;
 }
 
-.input-component-wrapper {
+.inputComponentWrapper {
     display: flex;
     justify-content: space-between;
 }
 
-.player-cards-container {
+.playerCardsContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -88,17 +90,17 @@ p {
         flex-direction: column;
     }
 
-    .input-component-wrapper {
+    .inputComponentWrapper {
         flex-direction: column-reverse;
         gap: 1rem;
     }
 
-    .current-player-avg {
+    .currentPlayerAvg {
         font-size: 2rem;
     }
 
 
-    .current-player-name {
+    .currentPlayerName {
         display: block;
         text-align: center;
         overflow: hidden;
@@ -107,7 +109,7 @@ p {
         font-size: 20vw;
     }
 
-    .current-player-score {
+    .currentPlayerScore {
         justify-content: center;
         font-size: 30vw;
     }

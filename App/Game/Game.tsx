@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useLocation, useParams } from "react-router";
 import { Player } from "../Players/Player";
 import PlayerCard from "../Players/PlayerCard";
 import avg from "../utils/avg";
 import InputComponent from "./InputComponent";
-import "./Game.css";
 import styles from "./game.module.css";
 import ConfirmReset from "../ConfirmReset/ConfirmReset";
+import { useLocation, useParams } from "react-router";
 
 export default function Game() {
   const location = useLocation();
@@ -67,21 +66,21 @@ export default function Game() {
   };
 
   return (
-    <div className={styles["game-container"]}>
+    <div className={styles.gameContainer}>
       {showConfirm && (
         <ConfirmReset onConfirm={handleConfirm} onCancel={handleCancel} />
       )}
-      <div className="current-player-display">
-        <div className="currentPlayerRow">
-          <h1 className={`current-player-name`}>
+      <div className={styles.currentPlayerDisplay}>
+        <div className={styles.currentPlayerRow}>
+          <h1 className={styles.currentPlayerName}>
             {players[currentIndex].name}
           </h1>
-          <div className={`current-player-score `}>
+          <div className={styles.currentPlayerScore}>
             {players[currentIndex].score}
           </div>
         </div>
-        <div className="input-component-wrapper" ref={inputWrapperRef}>
-          <div className="divider">
+        <div className={styles.inputComponentWrapper} ref={inputWrapperRef}>
+          <div className={styles["divider"]}>
             <InputComponent
               players={players}
               setPlayers={setPlayers}
@@ -90,8 +89,8 @@ export default function Game() {
               handleReset={handleReset}
             />
           </div>
-          <div className="divider">
-            <div className="current-player-avg">
+          <div className={styles["divider"]}>
+            <div className={styles.currentPlayerAvg}>
               <p>Avg:&nbsp;</p>
               <p>{avg(players[currentIndex].avg)}</p>
             </div>
@@ -99,7 +98,7 @@ export default function Game() {
         </div>
       </div>
 
-      <div className="player-cards-container">
+      <div className={styles.playerCardsContainer}>
         {sortedPlayers.map((e, key) => (
           <PlayerCard name={e.name} score={e.score} avg={e.avg} key={key} />
         ))}

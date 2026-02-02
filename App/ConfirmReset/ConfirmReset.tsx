@@ -1,5 +1,5 @@
 import React from "react";
-import "./ConfirmReset.css";
+import styles from "./confirmReset.module.css";
 
 type ConfirmResetProps = {
   onConfirm: () => void;
@@ -11,14 +11,14 @@ export default function ConfirmReset({
   onCancel,
 }: ConfirmResetProps) {
   return (
-    <div className="overlay">
-      <div className="modal">
+    <div className={styles.overlay}>
+      <div className={styles.modal}>
         <h2>Are you sure reset?</h2>
-        <div className="buttons">
-          <button className="yes" onClick={onConfirm}>
+        <div className={styles.buttons}>
+          <button className={styles.yes} onClick={onConfirm}>
             Yes
           </button>
-          <button className="no" onClick={onCancel}>
+          <button className={styles.no} onClick={onCancel}>
             No
           </button>
         </div>

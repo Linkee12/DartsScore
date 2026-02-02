@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import avg from "../utils/avg";
-import "./PlayerCard.css";
+import styles from "./playerCard.module.css";
 
 type PlayerCardProps = {
   name: string;
@@ -11,20 +11,22 @@ type PlayerCardProps = {
 const PlayerCard = memo(function PlayerCard(props: PlayerCardProps) {
   return (
     <div
-      className={`player-card ${props.score === 0 ? "player-card-winner" : "player-card-playing"}`}
+      className={`${styles.playerCard} ${
+        props.score === 0 ? styles.playerCardWinner : styles.playerCardPlaying
+      }`}
     >
-      <h4 className="player-card-name">{props.name}</h4>
-      <h5 className="player-card-score-label"> Score: </h5>
+      <h4 className={styles.playerCardName}>{props.name}</h4>
+      <h5 className={styles.playerCardScoreLabel}> Score: </h5>
       <div
         className={
           props.score !== 0
-            ? "player-card-score-value"
-            : "player-card-score-finished"
+            ? styles.playerCardScoreValue
+            : styles.playerCardScoreFinished
         }
       >
         {props.score != 0 ? props.score : "Congrat Bro :))"}
       </div>
-      <p className="player-card-avg">
+      <p className={styles.playerCardAvg}>
         Avarage:{avg(props.avg ? props.avg : [])}
       </p>
     </div>

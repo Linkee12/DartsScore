@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "./InputComponent.css";
+import styles from "./inputComponent.module.css";
 import { Player } from "../Players/Player";
 
 type InputComponentProps = {
@@ -73,7 +73,7 @@ export default function InputComponent({
   }
 
   return (
-    <div className="input-container">
+    <div className={styles.inputContainer}>
       <input
         type="tel"
         inputMode="numeric"
@@ -91,14 +91,14 @@ export default function InputComponent({
         }}
       />
       <button
-        className="number-button"
+        className={styles.numberButton}
         onClick={() => goBack()}
         onMouseDown={(e) => e.preventDefault()}
       >
         ←
       </button>
       <button
-        className="number-button"
+        className={styles.numberButton}
         onClick={() => handleReset()}
         onMouseDown={(e) => e.preventDefault()}
       >
