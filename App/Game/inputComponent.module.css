@@ -1,0 +1,60 @@
+.inputContainer {
+    display: flex;
+    gap: 8px;
+    height: 3.5rem;
+}
+
+.buttonRow {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.numberButton {
+    height: 3.5rem;
+    font-weight: bold;
+    font-size: 24px;
+    flex: 1;
+    background-color: #11171D;
+    color: #888888;
+    border: 1px solid #555555;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.numberButton:hover {
+    background-color: #2d3c4a;
+}
+
+.scoreInput {
+    color: #007C7C;
+    background-color: #333;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 16.5px 14px;
+    width: 50%;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.scoreInput::placeholder {
+    color: #888;
+}
+
+.scoreInput:focus {
+    outline: none;
+    border-color: #007C7C;
+}
+
+.scoreInput.error {
+    border-color: #d32f2f;
+    color: #d32f2f;
+}
+
+
+.scoreInput::-webkit-outer-spin-button,
+.scoreInput::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

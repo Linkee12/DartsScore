@@ -1,0 +1,92 @@
+.playerContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 16px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.playerHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.playerTitle {
+    font-size: 3rem;
+    color: #007C7C;
+    font-weight: bold;
+}
+
+.playerLogo {
+    width: 200px;
+    height: 150px;
+}
+
+.playerItem {
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    padding-left: 16px;
+    border-radius: 8px;
+    background-color: #1F1F1F;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.playerName {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #007C7C;
+}
+
+.deleteButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #007C7C;
+}
+
+.playerInputRow {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.playerInput {
+    background-color: #333333;
+    width: 100%;
+    padding: 16.5px 14px;
+    border: none;
+    border-radius: 0.6rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    outline: none;
+    box-shadow: 0 0 0 2px #007C7C;
+}
+
+.playButton {
+    background-color: #11171D;
+    min-height: 3.5rem;
+    color: #c0c0c0;
+    border: none;
+    font-size: large;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 0.5rem;
+}
+
+
+.playerRowsContainer {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    gap: 0.5rem;
+}

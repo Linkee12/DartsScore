@@ -1,0 +1,42 @@
+.playerCard {
+    min-width: 200px;
+    flex: 1;
+    justify-content: center;
+    color: #E3DECE;
+    padding: 16px;
+    border-radius: 0.6rem;
+
+}
+
+.playerCardWinner {
+    background-color: #BC6249;
+}
+
+.playerCardPlaying {
+    background-color: #11171D;
+}
+
+.playerCardName {
+    font-size: 2.125rem;
+    font-weight: 600;
+    margin: 0 0 0.35em 0;
+}
+
+.playerCardScoreLabel {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.playerCardScoreValue {
+    font-weight: 700;
+    font-size: 6rem;
+}
+
+.playerCardScoreFinished {
+    font-weight: 700;
+    font-size: 2.125rem;
+}
+
+.playerCardAvg {
+    font-size: 0.875rem;
+}

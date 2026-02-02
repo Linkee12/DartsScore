@@ -1,0 +1,23 @@
+.gamemodeContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    gap: 48px;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.gameModeButton {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    cursor: pointer;
+    background-color: #222;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    user-select: none;
+    padding: 0;
+}
