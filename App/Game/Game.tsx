@@ -80,7 +80,7 @@ export default function Game() {
           </div>
         </div>
         <div className={styles.inputComponentWrapper} ref={inputWrapperRef}>
-          <div className={styles["divider"]}>
+          <div className={styles.divider}>
             <InputComponent
               players={players}
               setPlayers={setPlayers}
@@ -89,7 +89,7 @@ export default function Game() {
               handleReset={handleReset}
             />
           </div>
-          <div className={styles["divider"]}>
+          <div className={styles.divider}>
             <div className={styles.currentPlayerAvg}>
               <p>Avg:&nbsp;</p>
               <p>{avg(players[currentIndex].avg)}</p>

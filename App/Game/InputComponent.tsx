@@ -80,7 +80,7 @@ export default function InputComponent({
         pattern="[0-9]*"
         autoComplete="off"
         value={input}
-        className={`scoreInput ${isError ? "error" : ""}`}
+        className={`${styles.scoreInput} ${isError ? styles.error : ""}`}
         onChange={(e) => setInput(e.target.value)}
         autoFocus
         onKeyDown={(e) => {
