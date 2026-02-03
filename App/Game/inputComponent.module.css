@@ -11,12 +11,13 @@
 }
 
 .numberButton {
+    display: flex;
     height: 3.5rem;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 2em;
     flex: 1;
     background-color: #11171D;
-    color: #888888;
+    color: #f9f6f6;
     border: 1px solid #555555;
     border-radius: 4px;
     padding: 8px 16px;
@@ -28,12 +29,13 @@
 }
 
 .scoreInput {
+    display: flex;
     color: #007C7C;
     background-color: #333;
     border: 1px solid #555;
     border-radius: 4px;
     padding: 16.5px 14px;
-    width: 30%;
+    flex: 1;
     box-sizing: border-box;
     font-size: 1rem;
 }
