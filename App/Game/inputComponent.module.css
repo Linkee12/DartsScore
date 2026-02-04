@@ -17,11 +17,13 @@
     font-size: 2em;
     flex: 1;
     background-color: #11171D;
-    color: #f9f6f6;
+    color: #E3DECE;
     border: 1px solid #555555;
     border-radius: 4px;
     padding: 8px 16px;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
 }
 
 .numberButton:hover {
@@ -38,6 +40,9 @@
     flex: 1;
     box-sizing: border-box;
     font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 124, 124, 0.4);
+    width: 80%;
+
 }
 
 .scoreInput::placeholder {
@@ -52,6 +57,7 @@
 .scoreInput.error {
     border-color: #d32f2f;
     color: #d32f2f;
+    box-shadow: 1px 1px 4px 1px #d32f2f;
 }
 
 
